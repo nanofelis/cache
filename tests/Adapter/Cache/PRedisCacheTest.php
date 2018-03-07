@@ -91,7 +91,7 @@ class PRedisCacheTest extends BaseTest
 
         $command = $this->createMock('Predis\Command\CommandInterface');
 
-        $connection = $this->createMock('Predis\Connection\PredisCluster');
+        $connection = $this->createMock('Predis\Connection\Aggregate\PredisCluster');
         $connection->expects($this->exactly(5))->method('executeCommandOnNodes')->with($this->equalTo($command))->will($this->onConsecutiveCalls([false], [true], [false, true], [true, false], [true, true]));
 
         $client = $this->createMock('Predis\ClientInterface');
